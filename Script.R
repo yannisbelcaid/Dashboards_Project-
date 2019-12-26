@@ -10,11 +10,11 @@ library(leaflet)
 packageVersion('plotly')
 
 
-x <- getURL("https://raw.githubusercontent.com/yannisbelcaid/Projet_Shiny_Dashboard/master/Data/full_trains.csv")
+x <- getURL("https://raw.githubusercontent.com/yannisbelcaid/Dashboards_Project-/master/Data/full_trains.csv")
 data_full_trains <- read.csv(text = x)
-y <- getURL("https://raw.githubusercontent.com/yannisbelcaid/Projet_Shiny_Dashboard/master/Data/airports.csv")
+y <- getURL("https://raw.githubusercontent.com/yannisbelcaid/Dashboards_Project-/master/Data/airports.csv")
 data_map <- read.csv(text = y)
-z <- getURL("https://raw.githubusercontent.com/yannisbelcaid/Projet_Shiny_Dashboard/master/Data/data_flights_aggregated_3.csv")
+z <- getURL("https://raw.githubusercontent.com/yannisbelcaid/Dashboards_Project-/master/Data/data_flights_aggregated_3.csv")
 data_flights_aggregated_3 <- read.csv(text = z) 
 
 

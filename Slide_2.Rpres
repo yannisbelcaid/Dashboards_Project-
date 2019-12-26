@@ -1,0 +1,123 @@
+Shiny dashboard Project
+========================================================
+author: BEAZIZ Raphaël, BELCAID Yannis, IEHL Marc-Antoine
+date: 26/12/2019
+autosize: true
+
+
+Links
+========================================================
+
+You can click on links below to see all the information that you need to evaluate our project. 
+
+-  Github : https://github.com/yannisbelcaid/Dashboards_Project-/tree/master/Data
+-  shinyapps.io : https://yannisbelcaid.shinyapps.io/Dashboards_Project-/
+-  Rpubs : 
+
+
+SNCF dashboard
+========================================================
+
+We've decided to use the full_trains.csv file to create sncf dashboard.
+You can see below the first line of the data set in order to get an idea of the structure of it. 
+```{r, echo=FALSE}
+library(shiny)
+library(shinydashboard)
+library(plotly)
+library(dplyr)
+library(sqldf)
+library(RCurl)
+x <- getURL("https://raw.githubusercontent.com/yannisbelcaid/Dashboards_Project-/master/Data/full_trains.csv")
+data_full_trains <- read.csv(text = x)
+head(data_full_trains, 1)
+```
+
+SNCF dashboard 
+========================================================
+
+In our tabset "Plot", we've selected few indicators that we thought interresting to focus on as the plot below (we were obliged to put links to Rpubs for the plots because it caused many problems in the presentation) : 
+-  http://rpubs.com/yannisbelcaid/562620) 
+```{r, echo=FALSE}
+library(shiny)
+library(shinydashboard)
+library(plotly)
+library(dplyr)
+library(sqldf)
+library(RCurl)
+
+
+```
+
+Insights SNCF dashboard
+========================================================
+We've noticed that there are more and more delay throught the year. The delay are bigger at arrival than at departure. The number of canceled trains increase throught the year too. 
+
+
+Flights dashboard 
+========================================================
+
+In order to realise the flights dashboard, we've done some preprocessing. 
+We've created a new csv file that we called "data_flights_aggregated_3".
+This file contains per ailine : 
+ - Total number of flights 
+ - Total number of delayed flights 
+ - The average flight duration 
+ - The average flight distance 
+ - The total distance covered by all airline flights 
+ - The average departure delay 
+ - The average arrival delay
+```{r, echo=FALSE}
+
+```
+
+Flights dashboard 
+========================================================
+ 
+In order to get an idea of the strucrure of "data_flights_aggregated_3", let's see the fisrt line of this file :  
+```{r, echo=FALSE}
+z <- getURL("https://raw.githubusercontent.com/yannisbelcaid/Dashboards_Project-/master/Data/data_flights_aggregated_3.csv")
+data_flights_aggregated_3 <- read.csv(text = z) 
+
+head(data_flights_aggregated_3, 1)
+```
+
+Flights dashboard 
+========================================================
+
+In our tabset "Plot", we've selected few indicators that we thought interresting to focus on as the plot below : 
+- http://rpubs.com/yannisbelcaid/562621
+
+```{r, echo=FALSE}
+     
+```
+
+
+Map  
+========================================================
+
+We've created a map in order to have an idea of the airline traffic in the us. 
+The map display by cluster, all the airports, you can click on the marker to have the name of the airport. 
+
+- http://rpubs.com/yannisbelcaid/562625 
+```{r}
+library(leaflet)
+
+y <- getURL("https://raw.githubusercontent.com/yannisbelcaid/Dashboards_Project-/master/Data/airports.csv")
+data_map <- read.csv(text = y)
+
+
+library
+m <- leaflet(data_map) %>% 
+              addTiles() %>%
+                  addMarkers(lng = ~LONGITUDE, lat = ~LATITUDE, # weight = 1,
+                             popup = ~paste(AIRPORT), 
+                             clusterOptions = markerClusterOptions()
+                             # radius = ~sqrt(Population) * 50, popup = ~paste(Ville, ":", Population),
+                             # color = "#a500a5", fillOpacity = 0.5
+                  )
+m
+```
+
+
+
+
